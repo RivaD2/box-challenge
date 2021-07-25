@@ -1,0 +1,21 @@
+.box-container {
+  display:flex;
+  flex-direction:column;
+  border:2px solid rgb(65, 63, 63);
+  height:100px;
+  width:100px;
+  margin-bottom:33px;
+  justify-content: center;
+  align-items: center;
+  cursor:pointer;
+}
+
+/* .selected-box {
+  background-color: rgb(99, 199, 99);
+  color:rgb(245, 240, 240);
+} */
+
+.not-selected-box {
+  background-color:rgb(240, 235, 235);
+  color:black;
+}
