@@ -1,5 +1,14 @@
 # Box Challenge
 
+**Author: Riva Davidowski**
+
+** How to install**
+
+- Run `npm i` to install all dependencies
+- Run `npm start` server
+-
+**About box-challenge**
+
 **1st phase:**
  Make a web page with a 3x3 grid of boxes, and when you click on a box it turns green. Only one box can be green, though. The boxes should all be the same component.
 
@@ -42,3 +51,8 @@ How do I break this down?
 - Create a counter that tracks box clicks, but only the first of the two. So each time the selection resets, the timer increments.
   - Show the counter at the bottom of the page
 - When two boxes are selected at the same time, if they are the same color, they become invisible and are no longer clickable.
+
+**6th phase:**
+
+- It is time to introduce GIFs! When a box selected, it should show a Gif instead of a random color.
+- There should be a total of 12 boxes, 6 GIFs, and each Gif appears twice
