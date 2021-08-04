@@ -2,11 +2,11 @@
 
 **Author: Riva Davidowski**
 
-** How to install**
+**How to install**
 
 - Run `npm i` to install all dependencies
 - Run `npm start` server
--
+
 **About box-challenge**
 
 **1st phase:**
@@ -55,4 +55,4 @@ How do I break this down?
 **6th phase:**
 
 - It is time to introduce GIFs! When a box selected, it should show a Gif instead of a random color.
-- There should be a total of 12 boxes, 6 GIFs, and each Gif appears twice
+- There should be a total of 12 boxes, 6 GIFs, and each GIF appears twice

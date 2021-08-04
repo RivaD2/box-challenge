@@ -1,13 +1,13 @@
 .box-container {
-  display:flex;
-  flex-direction:column;
-  border:2px solid rgb(65, 63, 63);
-  height:100px;
-  width:100px;
-  margin-bottom:33px;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid rgb(65, 63, 63);
+  height: 100px;
+  width: 100px;
+  margin-bottom: 33px;
   justify-content: center;
   align-items: center;
-  cursor:pointer;
+  cursor: pointer;
 }
 
 /* .selected-box {
@@ -16,6 +16,6 @@
 } */
 
 .not-selected-box {
-  background-color:rgb(240, 235, 235);
-  color:black;
+  background-color: rgb(240, 235, 235);
+  color: black;
 }
