@@ -1,18 +1,23 @@
 .grid-container {
-  display:flex;
-  flex-direction:column;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items:center;
-}
-
-.grid-content {
-  display:flex;
-  flex-direction:row;
-  flex-wrap:wrap;
-  width:399px;
-  justify-content: space-between;
+  align-items: center;
 }
 
 .page-title {
   padding-bottom: 20px;
+}
+
+.grid-content {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 600px;
+  justify-content: space-between;
+}
+
+.count-of-clicks {
+  color: black;
+  font-size: 14pt;
 }

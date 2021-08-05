@@ -1,21 +1,22 @@
 .box-container {
   display: flex;
   flex-direction: column;
-  border: 2px solid rgb(65, 63, 63);
-  height: 100px;
-  width: 100px;
+  border: 1px solid black;
+  height: 150px;
+  width: 150px;
   margin-bottom: 33px;
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  border-radius: 5%;
+  box-shadow: 10px 0 5px -2px black;
 }
 
-/* .selected-box {
-  background-color: rgb(99, 199, 99);
-  color:rgb(245, 240, 240);
-} */
+.box {
+  color: whitesmoke;
+}
 
 .not-selected-box {
-  background-color: rgb(240, 235, 235);
+  background-color: rgb(235, 230, 230);
   color: black;
 }

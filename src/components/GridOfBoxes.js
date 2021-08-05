@@ -7,10 +7,19 @@ const GridOfBoxes = props => {
   const [selectedBoxes, setSelectedBoxes] = useState([]);
   const [count, setCount] = useState(0);
   const [randomGifs, setRandomGifs] = useState([]);
+  const [lowestScore, setLowestScore] = useState(0);
 
   useEffect(() => {
     (async () => {
-      return await getAllGifs();
+      try {
+        let gifUrls = await getAllGifs();
+        let doubleGifs = [...gifUrls, ...gifUrls];
+        console.log('doubleGifs', doubleGifs);
+        shuffleArray(doubleGifs);
+        setRandomGifs(doubleGifs);
+      } catch (err) {
+        console.log(err);
+      }
     })();
   },[])
 

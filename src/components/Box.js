@@ -1,9 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { Animated } from 'react-animated-css';
 import './Box.css';
 
 const Box = props => {
+  const [visible, setVisible] = useState(true);
+
+  const hideCard = () => {
+    setTimeout(() => setVisible(false), 1000);
+  }
+
   // Index is the index of THIS box, selectedBoxes is the index of a box selected
   const {selectedBoxes, index, onBoxClicked, randomGif} = props;
+  console.log('randomGif as prop in box', randomGif)
   const onClickedBox = () => {
     onBoxClicked(index);
   }
@@ -24,9 +32,12 @@ const Box = props => {
   }
 
   return (
-    <div className='box-container' onClick={onClickedBox} style={style}>
-      <div className="box">Box {index}</div>
-    </div>
+    <Animated animationIn="zoomIn" animationOut="zoomOut" isVisible={visible}>
+      <div className="box" style={style}></div>
+      <div className='box-container' onClick={onClickedBox} style={style}>
+        <div className="box"></div>
+      </div>
+    </Animated>
   )
 }
 
