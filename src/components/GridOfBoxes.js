@@ -7,21 +7,21 @@ const GridOfBoxes = props => {
   const [selectedBoxes, setSelectedBoxes] = useState([]);
   const [count, setCount] = useState(0);
   const [randomGifs, setRandomGifs] = useState([]);
-  const [lowestScore, setLowestScore] = useState(0);
 
   useEffect(() => {
     (async () => {
       try {
         let gifUrls = await getAllGifs();
         let doubleGifs = [...gifUrls, ...gifUrls];
-        console.log('doubleGifs', doubleGifs);
+        console.log('randomGifs', randomGifs);
         shuffleArray(doubleGifs);
+        console.log('doubleGifs', doubleGifs);
         setRandomGifs(doubleGifs);
       } catch (err) {
         console.log(err);
       }
     })();
-  },[])
+  },[]);
 
   const getAllGifs = async () => {
     try {
@@ -34,8 +34,8 @@ const GridOfBoxes = props => {
     } catch (err) {
       console.error(err);
     }
- }
- 
+  };
+
   const onBoxClicked = (index) => {
     let newBoxesSelected;
     if (selectedBoxes.indexOf(index) !== -1) {
@@ -68,14 +68,9 @@ const GridOfBoxes = props => {
       }
   }
 
-  // On page load, gifs are set at a different order each time
-  useEffect(() => {
-    console.log('randomGifs in second useEffect', randomGifs)
-    let doubleGifs = [...randomGifs,...randomGifs];
-    console.log('randomGifs', randomGifs);
-    console.log('doubleGifs in second useEffect', doubleGifs)
-    shuffleArray(doubleGifs);
-  })
+  const checkEndOfGame = () => {
+    // Find if all values from randomGifs are null
+  };
 
   // Shuffling array
   const shuffleArray = arr => {
@@ -87,7 +82,7 @@ const GridOfBoxes = props => {
 
   const boxes = [];
   const boxCount = 12;
-  for(let i = 1; i <= boxCount; i++) {
+  for(let i = 0; i < boxCount; i++) {
     boxes.push(
       <Box 
         selectedBoxes={selectedBoxes} 
@@ -108,6 +103,9 @@ const GridOfBoxes = props => {
       </div>
       <div className="count-of-clicks">
         <p>You're going click crazy! The boxes were clicked {count} times! </p>
+      </div>
+      <div className="score">
+        You're lowest count  is:
       </div>
       <div>
       </div>

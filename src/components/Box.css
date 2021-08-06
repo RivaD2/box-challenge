@@ -1,7 +1,8 @@
 .box-container {
   display: flex;
   flex-direction: column;
-  border: 1px solid black;
+  background-size: cover;
+  border-left: 1px solid rgb(32, 55, 230);
   height: 150px;
   width: 150px;
   margin-bottom: 33px;
@@ -9,7 +10,8 @@
   align-items: center;
   cursor: pointer;
   border-radius: 5%;
-  box-shadow: 10px 0 5px -2px black;
+  box-shadow: 6px 0px 8px -2px rgb(20, 108, 214),
+    2px 0px 8px 3px rgb(219, 15, 222);
 }
 
 .box {
