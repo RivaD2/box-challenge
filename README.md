@@ -1,11 +1,11 @@
-# Box Challenge
+# Box Challenge: A memory game built with React
 
 **Author: Riva Davidowski**
 
 **How to install**
 
 - Run `npm i` to install all dependencies
-- Run `npm start` server
+- Run `npm start` to run the server
 
 **About box-challenge**
 
@@ -56,3 +56,8 @@ How do I break this down?
 
 - It is time to introduce GIFs! When a box selected, it should show a Gif instead of a random color.
 - There should be a total of 12 boxes, 6 GIFs, and each GIF appears twice
+
+**7th Phase:**
+
+- Set the players score to localStorage only when the game has ended
+- Find a way to track to the player's bestScore

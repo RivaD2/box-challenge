@@ -9,7 +9,8 @@ export const instance = axios.create({
 
 export const getGifs = async () => {
   try {
-    const response = await instance.get(`search?q=animal%20jerks&api_key=${giphyKey}&limit=6`);
+    const randomOffset = Math.floor(Math.random() * 200);
+    const response = await instance.get(`search?offset=${randomOffset}&q=cute%20cats&api_key=${giphyKey}&limit=6`);
     return response.data.data;
   } catch (err) {
     return console.error(err);

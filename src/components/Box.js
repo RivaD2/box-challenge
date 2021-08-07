@@ -21,8 +21,6 @@ const Box = props => {
     visible = false;
   } else if(isSelected) {
     style = {backgroundImage: `url('${randomGif}')`};
-    console.log('randomGif in box.js', randomGif);
-    console.log('backgroundimage',{backgroundImage: `url(${randomGif})`});
   } else {
     style = {};
   }

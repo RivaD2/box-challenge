@@ -7,20 +7,25 @@ const GridOfBoxes = props => {
   const [selectedBoxes, setSelectedBoxes] = useState([]);
   const [count, setCount] = useState(0);
   const [randomGifs, setRandomGifs] = useState([]);
+  const [bestScore, setBestScore] = useState([]);
 
   useEffect(() => {
     (async () => {
       try {
         let gifUrls = await getAllGifs();
         let doubleGifs = [...gifUrls, ...gifUrls];
-        console.log('randomGifs', randomGifs);
         shuffleArray(doubleGifs);
-        console.log('doubleGifs', doubleGifs);
         setRandomGifs(doubleGifs);
       } catch (err) {
         console.log(err);
       }
     })();
+    // Pull from storage, check if null, parse, and set in state
+    let scoreInStorage = localStorage.getItem('bestScore');
+    if(scoreInStorage !== null) {
+      scoreInStorage = parseInt(scoreInStorage);
+    }
+    setBestScore(scoreInStorage);
   },[]);
 
   const getAllGifs = async () => {
@@ -39,7 +44,7 @@ const GridOfBoxes = props => {
   const onBoxClicked = (index) => {
     let newBoxesSelected;
     if (selectedBoxes.indexOf(index) !== -1) {
-      // Creating a new arr to hold all new boxes selected 
+      // Creating a new arr to hold all new boxes selected
       // Selected boxes is an arr of indexes, to get the indexes I want to remove, I can
       // just return selectedBoxes that don't equal the index
      newBoxesSelected = selectedBoxes.filter(selectedBox => {
@@ -47,7 +52,6 @@ const GridOfBoxes = props => {
      });
      // If two boxes are selected, clicking on a new box will deselect the previous two boxes.
     } else if (selectedBoxes.length >= 2) {
-      console.log('selectedBoxes', selectedBoxes)
       newBoxesSelected = [index];
     } else {
       // Else, select another box, and remember it's index, in addition to previous box(es) selected
@@ -55,10 +59,14 @@ const GridOfBoxes = props => {
       newBoxesSelected = [...selectedBoxes, index];
       // randomGif is an array of strings
       // newBoxesSelected is an arr, with 2 indexes
+      // If they match, then they fade out slowly
       if(randomGifs[newBoxesSelected[0]] === randomGifs[newBoxesSelected[1]]) {
-        randomGifs[newBoxesSelected[0]] = null;
-        randomGifs[newBoxesSelected[1]] = null;
-        setRandomGifs([...randomGifs]);
+        setTimeout(() => {
+          randomGifs[newBoxesSelected[0]] = null;
+          randomGifs[newBoxesSelected[1]] = null;
+          setRandomGifs([...randomGifs]);
+          checkEndOfGame();
+        }, 1000);
       }
     }
       // Remember the box that I want to deselect using the index from above
@@ -70,9 +78,23 @@ const GridOfBoxes = props => {
 
   const checkEndOfGame = () => {
     // Find if all values from randomGifs are null
+    let isGameOver = true;
+    for (let gif of randomGifs) {
+      if (gif !== null) {
+        isGameOver = false;
+        break;
+      }
+    }
+    if(!isGameOver) {
+      return;
+    }
+    let currentScore = count;
+    if(currentScore < bestScore || bestScore === null) {
+      localStorage.setItem('bestScore', currentScore);
+      setBestScore(currentScore);
+    }
   };
 
-  // Shuffling array
   const shuffleArray = arr => {
     for (let i = arr.length - 1; i >= 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -84,10 +106,10 @@ const GridOfBoxes = props => {
   const boxCount = 12;
   for(let i = 0; i < boxCount; i++) {
     boxes.push(
-      <Box 
-        selectedBoxes={selectedBoxes} 
+      <Box
+        selectedBoxes={selectedBoxes}
         count={count}
-        index={i} 
+        index={i}
         key={i}
         onBoxClicked={onBoxClicked}
         randomGif={randomGifs[i]}
@@ -102,10 +124,10 @@ const GridOfBoxes = props => {
         {boxes}
       </div>
       <div className="count-of-clicks">
-        <p>You're going click crazy! The boxes were clicked {count} times! </p>
+        <p>You're going click crazy! You've clicked {count} times! </p>
       </div>
       <div className="score">
-        You're lowest count  is:
+       Best Score: {bestScore}
       </div>
       <div>
       </div>
