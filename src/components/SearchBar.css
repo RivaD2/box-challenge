@@ -1,0 +1,28 @@
+.searchbar-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding-top: 40px;
+}
+
+.search-input {
+  background-color: whitesmoke;
+  border-radius: 6px;
+  box-shadow: 0px 2px 12px 5px rgb(101, 101, 240);
+  cursor: pointer;
+  height: 3em;
+  overflow: hidden;
+  width: 38em;
+}
+
+.search-icon {
+  color: whitesmoke;
+  cursor: pointer;
+  font-size: 33px;
+  margin: 6px 10px 0px 10px;
+  vertical-align: middle;
+}
+
+.search-icon:hover {
+  color: rgb(210, 96, 235);
+}
