@@ -1,22 +1,18 @@
-import React, { useState } from 'react'
+import React  from 'react'
 import GridOfBoxes from './components/GridOfBoxes';
 import SearchBar from './components/SearchBar';
 import SearchList from './components/SearchList';
-import { searchGifs } from './axiosInstance';
 import './App.css';
+import GifList from './components/GifList';
 
 const App = () =>  {
-  const [term, setTerm] = useState('');
-
-  const handleSearchtermChanged = () => {
-    setTerm(term);
-  };
 
   return (
     <div className="app-container" >
-      <SearchBar onTermChanged={handleSearchtermChanged}  placeholder="Search GIFs" search={searchGifs}/>
+      <SearchBar  placeholder="Search GIFs" />
       <SearchList />
       <GridOfBoxes />
+      <GifList />
     </div>
   )
 };
