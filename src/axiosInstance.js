@@ -20,10 +20,8 @@ export const getGifs = async () => {
 export const searchGifs = async term => {
   try {
     const randomOffset = Math.floor(Math.random() * 200);
-    const search = await instance.get(`/search?offset=${randomOffset}&q=${term}&api_key=${giphyKey}&limit=6`);
-    // return search.data;
-    console.log('what is search.data', search.data.data);
-    return search.data.data;
+    const searchResponse = await instance.get(`search?offset=${randomOffset}&q=${term}&api_key=${giphyKey}&limit=6`);
+    return searchResponse.data.data;
   } catch (err) {
     console.log(err);
   }
