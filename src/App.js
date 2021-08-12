@@ -6,43 +6,61 @@ import './App.css';
 
 const App = () =>  {
   const [gifList, setGifList] = useState([]);
-  console.log('gifList in App.js:', gifList);
+  const [term, setTerm] = useState('');
 
   useEffect(() => {
     getAllGifs();
   },[]);
 
-  const getAllGifs = async term => {
+  const getAllGifs = async (term) => {
     try {
-      if(!term) {
-        const defaultGifs = await getGifs();
+      if (!term) {
+        const defaultGifs = await getGifs(term);
         let arrayOfDownsizedImages = defaultGifs.map(image => {
           return image.images.downsized.url;
         });
-        setGifList(arrayOfDownsizedImages);
+        let doubleGifs = [...arrayOfDownsizedImages, ...arrayOfDownsizedImages];
+        setGifList(doubleGifs);
       }
+      // Do something if term is entered and make this function cover the search
     } catch (err) {
       console.error(err);
     }
   };
 
-  const gifsFromSearch = async term => {
-    if(term > 0) {
-      const searchData = await searchGifs(term);
-      let arrayOfDownsizedImages = searchData.map(gif => {
-        return gif.images.downsized.url;
-      });
-      return arrayOfDownsizedImages;
-    }
+  const handleInputChange = e => {
+    e.preventDefault();
+    setTerm(e.target.value);
+    console.log('term in App is:', term)
   };
+
+  const resetInputField = () => {
+    setTerm('');
+  };
+
+  // const getGifsFromSearch = async term => {
+  //   if(term > 0) {
+  //     const searchData = await searchGifs(term);
+  //     console.log('searchData', searchData);
+  //     let arrayOfDownsizedImages = searchData.map(gif => {
+  //       return gif.images.downsized.url;
+  //     });
+  //     let doubleGifs = [...arrayOfDownsizedImages, ...arrayOfDownsizedImages];
+  //     setGifList(doubleGifs);
+  //     return arrayOfDownsizedImages;
+  //   }
+  // };
 
   return (
     <div className="app-container" >
       <SearchBar
         placeholder="Search GIFs"
-        data={gifList}
+        gifData={gifList}
+        handleChange={handleInputChange}
+        term={term}
+        resetInputField={resetInputField}
       />
-      <GridOfBoxes data={gifList}/>
+      <GridOfBoxes gifData={gifList}/>
     </div>
   )
 };

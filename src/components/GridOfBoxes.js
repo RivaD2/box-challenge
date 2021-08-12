@@ -2,20 +2,18 @@ import React, {useState, useEffect} from 'react'
 import Box from './Box';
 import './GridOfBoxes.css';
 
-const GridOfBoxes = props => {
+const GridOfBoxes = ({gifData}) => {
   const [selectedBoxes, setSelectedBoxes] = useState([]);
   const [count, setCount] = useState(0);
-  const [randomGifs, setRandomGifs] = useState([]);
+  // Do I need this additional state for gifs? I have gifData...
+  const [gifs, setGifs] = useState([]);
   const [bestScore, setBestScore] = useState([]);
-
-  const {data} = props;
 
   useEffect(() => {
     (async () => {
       try {
-        let doubleGifs = [...data, ...data];
-        shuffleArray(doubleGifs);
-        setRandomGifs(doubleGifs);
+        shuffleArray(gifData);
+        setGifs(gifData);
       } catch (err) {
         console.log(err);
       }
@@ -26,7 +24,7 @@ const GridOfBoxes = props => {
       scoreInStorage = parseInt(scoreInStorage);
     }
     setBestScore(scoreInStorage);
-  },[data]);
+  },[gifData]);
 
   const onBoxClicked = (index) => {
     let newBoxesSelected;
@@ -47,11 +45,11 @@ const GridOfBoxes = props => {
       // randomGif is an array of strings
       // newBoxesSelected is an arr, with 2 indexes
       // If they match, then they fade out slowly
-      if(randomGifs[newBoxesSelected[0]] === randomGifs[newBoxesSelected[1]]) {
+      if(gifs[newBoxesSelected[0]] === gifs[newBoxesSelected[1]]) {
         setTimeout(() => {
-          randomGifs[newBoxesSelected[0]] = null;
-          randomGifs[newBoxesSelected[1]] = null;
-          setRandomGifs([...randomGifs]);
+          gifs[newBoxesSelected[0]] = null;
+          gifs[newBoxesSelected[1]] = null;
+          setGifs([...gifs]);
           checkEndOfGame();
         }, 1000);
       }
@@ -66,7 +64,7 @@ const GridOfBoxes = props => {
   const checkEndOfGame = () => {
     // Find if all values from randomGifs are null
     let isGameOver = true;
-    for (let gif of randomGifs) {
+    for (let gif of gifs) {
       if (gif !== null) {
         isGameOver = false;
         break;
@@ -99,7 +97,7 @@ const GridOfBoxes = props => {
         index={i}
         key={i}
         onBoxClicked={onBoxClicked}
-        randomGif={randomGifs[i]}
+        randomGif={gifs[i]}
       />
     );
   }
