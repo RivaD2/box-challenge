@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react'
-import { getGifs } from '../axiosInstance';
 import Box from './Box';
 import './GridOfBoxes.css';
 
@@ -9,11 +8,12 @@ const GridOfBoxes = props => {
   const [randomGifs, setRandomGifs] = useState([]);
   const [bestScore, setBestScore] = useState([]);
 
+  const {data} = props;
+
   useEffect(() => {
     (async () => {
       try {
-        let gifUrls = await getAllGifs();
-        let doubleGifs = [...gifUrls, ...gifUrls];
+        let doubleGifs = [...data, ...data];
         shuffleArray(doubleGifs);
         setRandomGifs(doubleGifs);
       } catch (err) {
@@ -26,20 +26,7 @@ const GridOfBoxes = props => {
       scoreInStorage = parseInt(scoreInStorage);
     }
     setBestScore(scoreInStorage);
-  },[]);
-
-  const getAllGifs = async () => {
-    try {
-      const gifData = await getGifs();
-      let arrayOfDownsizedImages = gifData.map(image => {
-        return image.images.downsized.url;
-     });
-     setRandomGifs(arrayOfDownsizedImages);
-     return arrayOfDownsizedImages;
-    } catch (err) {
-      console.error(err);
-    }
-  };
+  },[data]);
 
   const onBoxClicked = (index) => {
     let newBoxesSelected;
