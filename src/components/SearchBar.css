@@ -5,6 +5,14 @@
   padding-top: 40px;
 }
 
+.search-icon {
+  color: black;
+  cursor: pointer;
+  font-size: 33px;
+  margin: 6px 10px 0px 10px;
+  position: absolute;
+}
+
 .search-input {
   background-color: whitesmoke;
   border-radius: 6px;
@@ -12,17 +20,19 @@
   cursor: pointer;
   height: 3em;
   overflow: hidden;
-  width: 38em;
+  text-align: center;
+  width: 40em;
 }
 
-.search-icon {
-  color: whitesmoke;
+.clear-icon {
+  color: black;
   cursor: pointer;
   font-size: 33px;
   margin: 6px 10px 0px 10px;
-  vertical-align: middle;
+  position: absolute;
 }
 
-.search-icon:hover {
+.search-icon:hover,
+.clear-icon:hover {
   color: rgb(210, 96, 235);
 }

@@ -1,55 +1,42 @@
 import React, { useState, useEffect } from 'react'
 import { IoSearch }from 'react-icons/io5';
 import { IoClose } from 'react-icons/io5';
-import { searchGifs } from '../axiosInstance';
 import './SearchBar.css';
 
-const SearchBar = props => {
-  const {placeholder} = props;
+const SearchBar = (props) => {
+  const {placeholder, data} = props;
+  const [gifs, setGifs] = useState([]);
   const [term, setTerm] = useState('');
-  const [gifsFromSearch, setGifsFromSearch] = useState([]);
-
-  console.log('gifsFromSearch', gifsFromSearch);
-  console.log('term in SearchBar is:', term);
 
   const onInputChange = e => {
-    setTerm(e.target.value);
+      e.preventDefault();
+      setTerm(e.target.value);
   };
 
-  const getSearchData = async () => {
-    try {
-      if(term.length > 0) {
-        const gifData = await searchGifs(term);
-        let arrayOfDownsizedImages = gifData.map(gif => {
-          return gif.images.downsized.url;
-        });
-       setGifsFromSearch(arrayOfDownsizedImages);
-      }
-    } catch (err) {
-      console.log()
-    }
-  };
-
-  const resetInputField = () => {
+   const resetInputField = () => {
     setTerm('');
-  }
+  };
+
+  const getGifsFromSearch = () => {
+      setGifs(data);
+  };
 
   return (
     <div className="searchbar-container">
-      <div className="input-container">
-          <input
-            type="text"
-            className="search-input"
-            placeholder={placeholder}
-            onFocus={e => e.target.placeholder = ''}
-            onBlur={e => e.target.placeholder = `${placeholder}`}
-            value={term}
-            onChange={onInputChange}
-          />
-          <span className="search-icon">
-            <IoSearch onClick={getSearchData} />
-            <IoClose onClick={resetInputField} />
-          </span>
+      <div className="search-icon-container">
+        <IoSearch onClick={getGifsFromSearch} className="search-icon" />
+      </div>
+      <input
+        type="text"
+        className="search-input"
+        placeholder={placeholder}
+        onFocus={e => e.target.placeholder = ''}
+        onBlur={e => e.target.placeholder = `${placeholder}`}
+        value={term}
+        onChange={onInputChange}
+      />
+      <div className="clear-icon-container">
+        <IoClose onClick={resetInputField} className="clear-icon"/>
       </div>
     </div>
   )
