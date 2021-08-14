@@ -6,17 +6,6 @@ export const instance = axios.create({
   timeout: 1000,
 });
 
-
-export const getGifs = async () => {
-  try {
-    const randomOffset = Math.floor(Math.random() * 200);
-    const response = await instance.get(`search?offset=${randomOffset}&q=cute%20cats&api_key=${giphyKey}&limit=6`);
-    return response.data.data;
-  } catch (err) {
-    return console.error(err);
-  }
-};
-
 export const searchGifs = async term => {
   try {
     const randomOffset = Math.floor(Math.random() * 200);

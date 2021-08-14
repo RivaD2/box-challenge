@@ -2,18 +2,15 @@ import React, {useState, useEffect} from 'react'
 import Box from './Box';
 import './GridOfBoxes.css';
 
-const GridOfBoxes = ({gifData}) => {
+const GridOfBoxes = ({ gifData, setGifList }) => {
   const [selectedBoxes, setSelectedBoxes] = useState([]);
   const [count, setCount] = useState(0);
-  // Do I need this additional state for gifs? I have gifData...
-  const [gifs, setGifs] = useState([]);
   const [bestScore, setBestScore] = useState([]);
 
   useEffect(() => {
     (async () => {
       try {
         shuffleArray(gifData);
-        setGifs(gifData);
       } catch (err) {
         console.log(err);
       }
@@ -45,11 +42,11 @@ const GridOfBoxes = ({gifData}) => {
       // randomGif is an array of strings
       // newBoxesSelected is an arr, with 2 indexes
       // If they match, then they fade out slowly
-      if(gifs[newBoxesSelected[0]] === gifs[newBoxesSelected[1]]) {
+      if(gifData[newBoxesSelected[0]] === gifData[newBoxesSelected[1]]) {
         setTimeout(() => {
-          gifs[newBoxesSelected[0]] = null;
-          gifs[newBoxesSelected[1]] = null;
-          setGifs([...gifs]);
+          gifData[newBoxesSelected[0]] = null;
+          gifData[newBoxesSelected[1]] = null;
+          setGifList([...gifData]);
           checkEndOfGame();
         }, 1000);
       }
@@ -64,7 +61,7 @@ const GridOfBoxes = ({gifData}) => {
   const checkEndOfGame = () => {
     // Find if all values from randomGifs are null
     let isGameOver = true;
-    for (let gif of gifs) {
+    for (let gif of gifData) {
       if (gif !== null) {
         isGameOver = false;
         break;
@@ -97,14 +94,13 @@ const GridOfBoxes = ({gifData}) => {
         index={i}
         key={i}
         onBoxClicked={onBoxClicked}
-        randomGif={gifs[i]}
+        randomGif={gifData[i]}
       />
     );
   }
 
   return (
     <div className="grid-container">
-      <h1 className="page-title">BOX CHALLENGE</h1>
       <div className="grid-content">
         {boxes}
       </div>

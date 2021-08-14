@@ -1,66 +1,51 @@
 import React, { useState, useEffect }  from 'react'
 import GridOfBoxes from './components/GridOfBoxes';
 import SearchBar from './components/SearchBar';
-import { searchGifs, getGifs } from './axiosInstance';
+import { searchGifs } from './axiosInstance';
 import './App.css';
 
 const App = () =>  {
   const [gifList, setGifList] = useState([]);
-  const [term, setTerm] = useState('');
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     getAllGifs();
   },[]);
 
-  const getAllGifs = async (term) => {
+  const getAllGifs = async term => {
     try {
-      if (!term) {
-        const defaultGifs = await getGifs(term);
-        let arrayOfDownsizedImages = defaultGifs.map(image => {
-          return image.images.downsized.url;
-        });
-        let doubleGifs = [...arrayOfDownsizedImages, ...arrayOfDownsizedImages];
-        setGifList(doubleGifs);
+      if(!term) {
+        term = 'cats';
       }
+      const defaultGifs = await searchGifs(term);
+      let arrayOfDownsizedImages = defaultGifs.map(image => {
+        return image.images.downsized.url;
+      });
+      let doubleGifs = [...arrayOfDownsizedImages, ...arrayOfDownsizedImages];
+      setGifList(doubleGifs);
       // Do something if term is entered and make this function cover the search
-    } catch (err) {
-      console.error(err);
+    } catch (error) {
+      setError('Unable to fetch gifs');
+      if (error) {
+        console.log(`Error here: ${error.message}`);
+      }
     }
   };
 
-  const handleInputChange = e => {
-    e.preventDefault();
-    setTerm(e.target.value);
-    console.log('term in App is:', term)
-  };
-
-  const resetInputField = () => {
-    setTerm('');
-  };
-
-  // const getGifsFromSearch = async term => {
-  //   if(term > 0) {
-  //     const searchData = await searchGifs(term);
-  //     console.log('searchData', searchData);
-  //     let arrayOfDownsizedImages = searchData.map(gif => {
-  //       return gif.images.downsized.url;
-  //     });
-  //     let doubleGifs = [...arrayOfDownsizedImages, ...arrayOfDownsizedImages];
-  //     setGifList(doubleGifs);
-  //     return arrayOfDownsizedImages;
-  //   }
-  // };
+  const onSearch = term => {
+    getAllGifs(term);
+  }
 
   return (
     <div className="app-container" >
       <SearchBar
         placeholder="Search GIFs"
-        gifData={gifList}
-        handleChange={handleInputChange}
-        term={term}
-        resetInputField={resetInputField}
+        onSearch={onSearch}
       />
-      <GridOfBoxes gifData={gifList}/>
+      <div className="error-message">
+        {error}
+      </div>
+      <GridOfBoxes gifData={gifList} setGifList={setGifList}/>
     </div>
   )
 };

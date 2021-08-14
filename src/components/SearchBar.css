@@ -3,13 +3,14 @@
   flex-direction: row;
   justify-content: center;
   padding-top: 40px;
+  font-size: 14pt;
 }
 
 .search-icon {
   color: black;
   cursor: pointer;
-  font-size: 33px;
-  margin: 6px 10px 0px 10px;
+  font-size: 28px;
+  margin: 8px 10px 0px 10px;
   position: absolute;
 }
 
@@ -21,15 +22,21 @@
   height: 3em;
   overflow: hidden;
   text-align: center;
-  width: 40em;
+  width: 50em;
+}
+
+.clear-icon-container {
+  position: relative;
 }
 
 .clear-icon {
   color: black;
   cursor: pointer;
-  font-size: 33px;
+  font-size: 28px;
   margin: 6px 10px 0px 10px;
   position: absolute;
+  top: 4px;
+  right: 5px;
 }
 
 .search-icon:hover,
