@@ -3,6 +3,15 @@
   flex-direction: row;
   justify-content: center;
   padding-top: 40px;
+  font-size: 14pt;
+}
+
+.search-icon {
+  color: black;
+  cursor: pointer;
+  font-size: 28px;
+  margin: 8px 10px 0px 10px;
+  position: absolute;
 }
 
 .search-input {
@@ -12,17 +21,25 @@
   cursor: pointer;
   height: 3em;
   overflow: hidden;
-  width: 38em;
+  text-align: center;
+  width: 50em;
 }
 
-.search-icon {
-  color: whitesmoke;
+.clear-icon-container {
+  position: relative;
+}
+
+.clear-icon {
+  color: black;
   cursor: pointer;
-  font-size: 33px;
+  font-size: 28px;
   margin: 6px 10px 0px 10px;
-  vertical-align: middle;
+  position: absolute;
+  top: 4px;
+  right: 5px;
 }
 
-.search-icon:hover {
+.search-icon:hover,
+.clear-icon:hover {
   color: rgb(210, 96, 235);
 }

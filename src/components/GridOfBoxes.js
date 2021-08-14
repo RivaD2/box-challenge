@@ -1,21 +1,16 @@
 import React, {useState, useEffect} from 'react'
-import { getGifs } from '../axiosInstance';
 import Box from './Box';
 import './GridOfBoxes.css';
 
-const GridOfBoxes = props => {
+const GridOfBoxes = ({ gifData, setGifList }) => {
   const [selectedBoxes, setSelectedBoxes] = useState([]);
   const [count, setCount] = useState(0);
-  const [randomGifs, setRandomGifs] = useState([]);
   const [bestScore, setBestScore] = useState([]);
 
   useEffect(() => {
     (async () => {
       try {
-        let gifUrls = await getAllGifs();
-        let doubleGifs = [...gifUrls, ...gifUrls];
-        shuffleArray(doubleGifs);
-        setRandomGifs(doubleGifs);
+        shuffleArray(gifData);
       } catch (err) {
         console.log(err);
       }
@@ -26,20 +21,7 @@ const GridOfBoxes = props => {
       scoreInStorage = parseInt(scoreInStorage);
     }
     setBestScore(scoreInStorage);
-  },[]);
-
-  const getAllGifs = async () => {
-    try {
-      const gifData = await getGifs();
-      let arrayOfDownsizedImages = gifData.map(image => {
-        return image.images.downsized.url;
-     });
-     setRandomGifs(arrayOfDownsizedImages);
-     return arrayOfDownsizedImages;
-    } catch (err) {
-      console.error(err);
-    }
-  };
+  },[gifData]);
 
   const onBoxClicked = (index) => {
     let newBoxesSelected;
@@ -60,11 +42,11 @@ const GridOfBoxes = props => {
       // randomGif is an array of strings
       // newBoxesSelected is an arr, with 2 indexes
       // If they match, then they fade out slowly
-      if(randomGifs[newBoxesSelected[0]] === randomGifs[newBoxesSelected[1]]) {
+      if(gifData[newBoxesSelected[0]] === gifData[newBoxesSelected[1]]) {
         setTimeout(() => {
-          randomGifs[newBoxesSelected[0]] = null;
-          randomGifs[newBoxesSelected[1]] = null;
-          setRandomGifs([...randomGifs]);
+          gifData[newBoxesSelected[0]] = null;
+          gifData[newBoxesSelected[1]] = null;
+          setGifList([...gifData]);
           checkEndOfGame();
         }, 1000);
       }
@@ -79,7 +61,7 @@ const GridOfBoxes = props => {
   const checkEndOfGame = () => {
     // Find if all values from randomGifs are null
     let isGameOver = true;
-    for (let gif of randomGifs) {
+    for (let gif of gifData) {
       if (gif !== null) {
         isGameOver = false;
         break;
@@ -112,14 +94,13 @@ const GridOfBoxes = props => {
         index={i}
         key={i}
         onBoxClicked={onBoxClicked}
-        randomGif={randomGifs[i]}
+        randomGif={gifData[i]}
       />
     );
   }
 
   return (
     <div className="grid-container">
-      <h1 className="page-title">BOX CHALLENGE</h1>
       <div className="grid-content">
         {boxes}
       </div>
