@@ -1,7 +1,6 @@
 .searchbar-container {
   display: flex;
   flex-direction: row;
-  font-size: 14pt;
   justify-content: center;
   padding-top: 40px;
 }
@@ -9,9 +8,13 @@
 .search-icon {
   color: black;
   cursor: pointer;
-  font-size: 28px;
-  margin: 8px 10px 0px 10px;
+  font-size: 32px;
+  margin: 14px 10px 0px 10px;
   position: absolute;
+}
+
+.input-container {
+  overflow: hidden;
 }
 
 .search-input {
@@ -19,10 +22,15 @@
   border-radius: 6px;
   box-shadow: 0px 2px 12px 5px rgb(101, 101, 240);
   cursor: pointer;
-  height: 3em;
+  font-size: 16pt;
+  height: 60px;
   overflow: hidden;
   text-align: center;
-  width: 50em;
+  width: 700px;
+}
+
+.search-input::placeholder {
+  font-size: 16pt;
 }
 
 .clear-icon-container {
@@ -30,13 +38,7 @@
 }
 
 .clear-icon {
-  color: black;
-  cursor: pointer;
-  font-size: 28px;
-  margin: 6px 10px 0px 10px;
-  position: absolute;
   right: 5px;
-  top: 4px;
 }
 
 .search-icon:hover,

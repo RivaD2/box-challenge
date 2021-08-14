@@ -7,6 +7,11 @@
 - Run `npm i` to install all dependencies
 - Run `npm start` to run the server
 
+**Tools used:**
+
+- Axios
+- react-animated-css for the Animated Box
+
 **About box-challenge**
 
 **1st phase:**
@@ -61,3 +66,15 @@ How do I break this down?
 
 - Set the players score to localStorage only when the game has ended
 - Find a way to track to the player's bestScore
+
+**8th Phase:**
+
+- Introduce the search endpoint from Giphy API
+- Users should be able to enter in a search term to search for GIFs of their choosing
+  - This allows the user to customize the memory game
+- Show default gifs on page load of your choosing
+
+**9th Phase:**
+
+- Upon arrival to the game, the user should be given instructions on how to play this game
+  - Use a model to show instructions
