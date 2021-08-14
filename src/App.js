@@ -14,7 +14,7 @@ const App = () =>  {
 
   const getAllGifs = async term => {
     try {
-      if(!term) {
+      if (!term) {
         term = 'cats';
       }
       const defaultGifs = await searchGifs(term);
@@ -23,7 +23,6 @@ const App = () =>  {
       });
       let doubleGifs = [...arrayOfDownsizedImages, ...arrayOfDownsizedImages];
       setGifList(doubleGifs);
-      // Do something if term is entered and make this function cover the search
     } catch (error) {
       setError('Unable to fetch gifs');
       if (error) {
@@ -38,6 +37,7 @@ const App = () =>  {
 
   return (
     <div className="app-container" >
+      <div className="page-title">The GIFing Game</div>
       <SearchBar
         placeholder="Search GIFs"
         onSearch={onSearch}

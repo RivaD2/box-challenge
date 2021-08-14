@@ -16,7 +16,7 @@ const Box = props => {
   const isSelected = selectedBoxes.indexOf(index) !== -1;
   let style;
   let visible = true;
-  if(randomGif === null) {
+  if (randomGif === null) {
     style = {};
     visible = false;
   } else if(isSelected) {

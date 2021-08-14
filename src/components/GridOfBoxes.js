@@ -8,13 +8,7 @@ const GridOfBoxes = ({ gifData, setGifList }) => {
   const [bestScore, setBestScore] = useState([]);
 
   useEffect(() => {
-    (async () => {
-      try {
-        shuffleArray(gifData);
-      } catch (err) {
-        console.log(err);
-      }
-    })();
+    shuffleArray(gifData);
     // Pull from storage, check if null, parse, and set in state
     let scoreInStorage = localStorage.getItem('bestScore');
     if(scoreInStorage !== null) {
@@ -67,7 +61,7 @@ const GridOfBoxes = ({ gifData, setGifList }) => {
         break;
       }
     }
-    if(!isGameOver) {
+    if (!isGameOver) {
       return;
     }
     let currentScore = count;
@@ -82,7 +76,7 @@ const GridOfBoxes = ({ gifData, setGifList }) => {
       const j = Math.floor(Math.random() * (i + 1));
       [arr[i], arr[j]] = [arr[j], arr[i]];
     }
-  }
+  };
 
   const boxes = [];
   const boxCount = 12;
@@ -105,7 +99,7 @@ const GridOfBoxes = ({ gifData, setGifList }) => {
         {boxes}
       </div>
       <div className="count-of-clicks">
-        <p>You're going click crazy! You've clicked {count} times! </p>
+        <p className="click-count">You've clicked {count} times! </p>
       </div>
       <div className="score">
        Best Score: {bestScore}
