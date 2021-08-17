@@ -1,4 +1,4 @@
-# Box Challenge: A memory game built with React
+# GIFing Game: A memory game built with React
 
 **Author: Riva Davidowski**
 
