@@ -1,17 +1,19 @@
 .grid-container {
-  align-items: center;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   margin-top: 100px;
 }
 
 .grid-content {
+  align-self: center;
+  display: grid;
+  grid-template-columns: repeat(3, 3fr);
+  grid-gap: 30px;
+}
+
+.score-container {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  width: 600px;
-  justify-content: space-between;
+  flex-direction: column;
 }
 
 .count-of-clicks,
@@ -19,4 +21,11 @@
   color: rgb(217, 42, 240);
   font-family: "Oswald", sans-serif;
   font-size: 20pt;
+}
+
+@media screen and (max-width: 600px) {
+  .count-of-clicks,
+  .score {
+    font-size: 16pt;
+  }
 }

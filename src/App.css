@@ -10,3 +10,9 @@
   padding-top: 60px;
   font-family: "Anton", sans-serif;
 }
+
+@media screen and (max-width: 600px) {
+  .page-title {
+    font-size: 24pt;
+  }
+}
