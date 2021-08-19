@@ -24,10 +24,6 @@
 }
 
 @media screen and (max-width: 600px) {
-  .grid-content {
-    grid-template-columns: repeat(3, 2fr);
-  }
-
   .count-of-clicks,
   .score {
     font-size: 16pt;
