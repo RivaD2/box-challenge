@@ -98,13 +98,13 @@ const GridOfBoxes = ({ gifData, setGifList }) => {
       <div className="grid-content">
         {boxes}
       </div>
-      <div className="count-of-clicks">
-        <p className="click-count">You've clicked {count} times! </p>
-      </div>
-      <div className="score">
-       Best Score: {bestScore}
-      </div>
-      <div>
+      <div className="score-container">
+        <div className="count-of-clicks">
+          <p className="click-count">You've clicked {count} times! </p>
+        </div>
+        <div className="score">
+          Best Score: {bestScore}
+        </div>
       </div>
     </div>
   )

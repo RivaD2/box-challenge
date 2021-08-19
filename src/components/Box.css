@@ -1,5 +1,8 @@
+* {
+  box-sizing: border-box;
+}
+
 .box-container {
-  align-items: center;
   background-color: black;
   background-size: cover;
   border-radius: 30%;
@@ -7,19 +10,29 @@
   box-shadow: 6px 0px 8px -2px rgb(20, 108, 214),
     2px 0px 8px 3px rgb(219, 15, 222);
   cursor: pointer;
-  display: flex;
-  flex-direction: column;
   height: 150px;
-  justify-content: center;
-  margin-bottom: 33px;
   width: 150px;
+  margin-bottom: 33px;
 }
 
 .box {
   color: whitesmoke;
+  min-width: 150px;
 }
 
 .not-selected-box {
   background-color: rgb(235, 230, 230);
   color: black;
+}
+
+@media screen and (max-width: 600px) {
+  .box-container {
+    height: 80px;
+    width: 80px;
+  }
+
+  .box {
+    color: whitesmoke;
+    min-width: 40px;
+  }
 }

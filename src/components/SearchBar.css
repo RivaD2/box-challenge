@@ -45,3 +45,18 @@
 .clear-icon:hover {
   color: rgb(210, 96, 235);
 }
+
+@media screen and (max-width: 600px) {
+  .search-icon {
+    font-size: 20px;
+  }
+
+  .search-input {
+    height: 48px;
+    width: 340px;
+  }
+
+  .search-input::placeholder {
+    font-size: 14pt;
+  }
+}
