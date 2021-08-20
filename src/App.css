@@ -11,6 +11,17 @@
   font-family: "Anton", sans-serif;
 }
 
+.show-instructions {
+  background-color: rgb(221, 118, 216);
+  border: 2px solid rgb(101, 101, 240);
+  border-radius: 5%;
+  color: rgb(41, 40, 41);
+  font-family: "Oswald", sans-serif;
+  font-size: 14pt;
+  height: 40px;
+  width: 150px;
+}
+
 @media screen and (max-width: 600px) {
   .page-title {
     font-size: 24pt;
