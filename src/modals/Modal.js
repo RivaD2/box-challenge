@@ -22,8 +22,9 @@ const Modal = ({ openModal, toggleModal, children }) => {
           </div>
           <div className="instructions">
             <p> 1. Enter a search term and find your favorite GIFs</p>
-            <p> 2. Test your memory skills by trying to find the matching pairs</p>
-            <p> 3. Find the matching pairs in shortest amount of clicks</p>
+            <p> 2. Find the matching pairs of GIFs</p>
+            <p> 3. Goal is to find all pairs in the lowest amount of clicks</p>
+            <p> 3. Your best score will be saved!</p>
           </div>
           <div className="button-container">
             <button className="close-modal-button" onClick={toggleModal}>
