@@ -7,6 +7,7 @@ const Modal = ({ openModal, toggleModal, children }) => {
   return (
       <div className="modal-container">
         <div className="modal-content">
+          <div className="modal-body">
           <iframe
             src="https://giphy.com/embed/3oEjHOyNwE2iz1z6bC"
             title="giphy-cat"
@@ -31,6 +32,7 @@ const Modal = ({ openModal, toggleModal, children }) => {
               Close and Play
             </button>
           </div>
+        </div>
         </div>
       </div>
   )
