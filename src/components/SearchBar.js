@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { IoSearch }from 'react-icons/io5';
 import { IoClose } from 'react-icons/io5';
 import './SearchBar.css';

@@ -2,11 +2,13 @@ import React, { useState, useEffect }  from 'react'
 import GridOfBoxes from './components/GridOfBoxes';
 import SearchBar from './components/SearchBar';
 import { searchGifs } from './axiosInstance';
+import Modal from './modals/Modal';
 import './App.css';
 
 const App = () =>  {
   const [gifList, setGifList] = useState([]);
   const [error, setError] = useState(null);
+  const [modalOpen, setModalOpen] = useState(false);
 
   useEffect(() => {
     getAllGifs();
@@ -33,19 +35,26 @@ const App = () =>  {
 
   const onSearch = term => {
     getAllGifs(term);
-  }
+  };
+
+  const toggleModal = () => {
+    setModalOpen(!modalOpen)
+  };
 
   return (
     <div className="app-container" >
-      <div className="page-title">The GIFing Game</div>
-      <SearchBar
-        placeholder="Search GIFs"
-        onSearch={onSearch}
-      />
+      <div className="page-title">
+        The GIFing Game
+      </div>
+      <SearchBar placeholder="Search GIFs" onSearch={onSearch} />
       <div className="error-message">
         {error}
       </div>
-      <GridOfBoxes gifData={gifList} setGifList={setGifList}/>
+      <button className="show-instructions" onClick={toggleModal}>
+       HOW TO PLAY
+      </button>
+      <GridOfBoxes gifData={gifList} setGifList={setGifList} />
+      <Modal openModal={modalOpen} toggleModal={toggleModal} />
     </div>
   )
 };
