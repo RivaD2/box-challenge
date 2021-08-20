@@ -27,12 +27,21 @@
 
 @media screen and (max-width: 600px) {
   .box-container {
-    height: 80px;
-    width: 80px;
+    box-shadow: 6px 0px 8px -2px rgb(20, 108, 214),
+      2px 0px 6px 0px rgb(219, 15, 222);
+    height: 100px;
+    width: 100px;
   }
 
   .box {
     color: whitesmoke;
     min-width: 40px;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .box-container {
+    height: 80px;
+    width: 80px;
   }
 }

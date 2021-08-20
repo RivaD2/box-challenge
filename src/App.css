@@ -21,11 +21,16 @@
   font-size: 14pt;
   height: 50px;
   width: 180px;
-  margin-top: 40px;
+  margin-top: 48px;
 }
 
 @media screen and (max-width: 600px) {
   .page-title {
     font-size: 24pt;
+  }
+
+  .show-instructions {
+    height: 42px;
+    width: 148px;
   }
 }
