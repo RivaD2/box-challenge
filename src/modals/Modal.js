@@ -1,7 +1,7 @@
 import React from 'react'
 import './Modal.css';
 
-const Modal = ({ openModal, toggleModal, children }) => {
+const Modal = ({ openModal, toggleModal }) => {
   if(!openModal) return null;
 
   return (
