@@ -1,5 +1,6 @@
 .modal-container {
   background-color: rgba(160, 157, 157, 0.345);
+  cursor: pointer;
   position: fixed;
   top: 0;
   left: 0;
@@ -18,43 +19,45 @@
 
 .modal-body {
   align-items: center;
-  background-color: rgb(8, 8, 8);
+  background-color: rgb(3, 3, 3);
   border-radius: 5%;
   box-shadow: 6px 0px 8px -2px rgb(230, 94, 230);
-  color: azure;
+  color: rgb(231, 235, 235);
   display: flex;
   flex-direction: column;
-  height: 76vh;
+  height: 78vh;
   padding: 20px;
-  width: 38vw;
+  width: 40vw;
 }
 
 .modal-title {
   font-family: "Oswald", sans-serif;
-  font-size: 30pt;
+  font-size: 38pt;
   padding-top: 14px;
 }
 
 .instructions {
+  font-family: "PT Sans Narrow", sans-serif;
   font-size: 16pt;
-  padding-top: 20px;
+  padding-top: 24px;
 }
 
 .button-container {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin: 16px 0px 60px 0px;
+  margin: 20px 0px 40px 0px;
 }
 
 .close-modal-button {
+  cursor: pointer;
   background-color: rgb(221, 118, 216);
   border: 2px solid rgb(101, 101, 240);
   border-radius: 5%;
-  color: rgb(41, 40, 41);
+  color: rgb(20, 20, 20);
   font-family: "Oswald", sans-serif;
   font-size: 14pt;
-  height: 40px;
+  height: 44px;
   width: 150px;
 }
 
@@ -79,7 +82,7 @@
 
 @media screen and (max-width: 768px) {
   .modal-body {
-    width: 50vw;
+    width: 60vw;
     height: 80vh;
   }
 
@@ -89,7 +92,7 @@
   }
 
   .modal-title {
-    font-size: 28pt;
+    font-size: 30pt;
   }
 
   .button-container {
@@ -97,10 +100,10 @@
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 360px) {
   .modal-body {
     width: 80vw;
-    height: 80vh;
+    height: 78vh;
   }
 
   .giphy-embed {
@@ -109,7 +112,8 @@
   }
 
   .close-modal-button {
-    height: 36px;
+    height: 40px;
     width: 140px;
+    margin-top: 40px;
   }
 }

@@ -50,10 +50,10 @@ const App = () =>  {
       <div className="error-message">
         {error}
       </div>
-      <GridOfBoxes gifData={gifList} setGifList={setGifList} />
       <button className="show-instructions" onClick={toggleModal}>
-        How to Play
+       HOW TO PLAY
       </button>
+      <GridOfBoxes gifData={gifList} setGifList={setGifList} />
       <Modal openModal={modalOpen} toggleModal={toggleModal} />
     </div>
   )
