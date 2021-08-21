@@ -16,7 +16,6 @@ const Modal = ({ openModal, toggleModal }) => {
               frameBorder="0"
               className="giphy-embed">
             </iframe>
-            <p><a href="https://giphy.com/gifs/originals-animation-kitten-logo-3oEjHOyNwE2iz1z6bC">via GIPHY</a></p>
             <div className="modal-title">
               <div>HOW TO PLAY</div>
             </div>

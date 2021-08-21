@@ -11,6 +11,8 @@
 
 - Axios
 - react-animated-css for the Animated Box
+- FlexGrid
+- Giphy API
 
 **About box-challenge**
 
@@ -77,4 +79,4 @@ How do I break this down?
 **9th Phase:**
 
 - Upon arrival to the game, the user should be given instructions on how to play this game
-  - Use a model to show instructions
+  - Use a modal to show instructions
