@@ -21,8 +21,8 @@ const SearchBar = ({ placeholder, onSearch }) => {
 
   return (
     <div className="searchbar-container">
-      <div className="search-icon-container">
-        <IoSearch onClick={onGetGifsFromSearch} className="search-icon" />
+      <div>
+      <IoClose onClick={resetInputField} className="left-icon" />
       </div>
         <input
           type="text"
@@ -33,8 +33,8 @@ const SearchBar = ({ placeholder, onSearch }) => {
           value={term}
           onChange={handleInputChange}
         />
-      <div className="clear-icon-container">
-        <IoClose onClick={resetInputField} className="clear-icon search-icon"/>
+      <div className="right-icon-container">
+        <IoSearch onClick={onGetGifsFromSearch} className="right-icon left-icon"/>
       </div>
     </div>
   )

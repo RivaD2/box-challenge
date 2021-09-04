@@ -8,6 +8,8 @@ const GridOfBoxes = ({ gifData, setGifList }) => {
   const [bestScore, setBestScore] = useState([]);
 
   useEffect(() => {
+    // Prevents shuffle rerender if list is empty on start
+    if (gifData && gifData.indexOf(null) !== -1) return;
     shuffleArray(gifData);
     // Pull from storage, check if null, parse, and set in state
     let scoreInStorage = localStorage.getItem('bestScore');
@@ -15,9 +17,10 @@ const GridOfBoxes = ({ gifData, setGifList }) => {
       scoreInStorage = parseInt(scoreInStorage);
     }
     setBestScore(scoreInStorage);
+    setSelectedBoxes([]);
   },[gifData]);
 
-  const onBoxClicked = (index) => {
+  const onBoxClicked = index => {
     let newBoxesSelected;
     if (selectedBoxes.indexOf(index) !== -1) {
       // Creating a new arr to hold all new boxes selected
@@ -33,10 +36,11 @@ const GridOfBoxes = ({ gifData, setGifList }) => {
       // Else, select another box, and remember it's index, in addition to previous box(es) selected
       // Store those additional box indexes in state
       newBoxesSelected = [...selectedBoxes, index];
+      console.log('newBoxesSelected', newBoxesSelected);
       // randomGif is an array of strings
       // newBoxesSelected is an arr, with 2 indexes
       // If they match, then they fade out slowly
-      if(gifData[newBoxesSelected[0]] === gifData[newBoxesSelected[1]]) {
+      if (gifData[newBoxesSelected[0]] === gifData[newBoxesSelected[1]]) {
         setTimeout(() => {
           gifData[newBoxesSelected[0]] = null;
           gifData[newBoxesSelected[1]] = null;
@@ -86,7 +90,7 @@ const GridOfBoxes = ({ gifData, setGifList }) => {
         selectedBoxes={selectedBoxes}
         count={count}
         index={i}
-        key={i}
+        key={`${gifData[i]}${i}`}
         onBoxClicked={onBoxClicked}
         randomGif={gifData[i]}
       />
@@ -96,7 +100,7 @@ const GridOfBoxes = ({ gifData, setGifList }) => {
   return (
     <div className="grid-container">
       <div className="grid-content">
-        {boxes}
+        {gifData.length > 0 && boxes}
       </div>
       <div className="score-container">
         <div className="count-of-clicks">

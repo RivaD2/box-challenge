@@ -46,13 +46,13 @@ const App = () =>  {
       <div className="page-title">
         The GIFing Game
       </div>
+      <button className="show-instructions" onClick={toggleModal}>
+       HOW TO PLAY
+      </button>
       <SearchBar placeholder="Search GIFs" onSearch={onSearch} />
       <div className="error-message">
         {error}
       </div>
-      <button className="show-instructions" onClick={toggleModal}>
-       HOW TO PLAY
-      </button>
       <GridOfBoxes gifData={gifList} setGifList={setGifList} />
       <Modal openModal={modalOpen} toggleModal={toggleModal} />
     </div>

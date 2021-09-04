@@ -5,7 +5,7 @@
   padding-top: 40px;
 }
 
-.search-icon {
+.left-icon {
   color: black;
   cursor: pointer;
   font-size: 32px;
@@ -33,16 +33,16 @@
   font-size: 16pt;
 }
 
-.clear-icon-container {
+.right-icon-container {
   position: relative;
 }
 
-.clear-icon {
+.right-icon {
   right: 5px;
 }
 
-.search-icon:hover,
-.clear-icon:hover {
+.left-icon:hover,
+.right-icon:hover {
   color: rgb(210, 96, 235);
 }
 
@@ -53,7 +53,7 @@
 }
 
 @media screen and (max-width: 600px) {
-  .search-icon {
+  .left-icon {
     font-size: 20px;
   }
 
