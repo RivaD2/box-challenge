@@ -4,13 +4,24 @@
   justify-content: center;
   padding-top: 40px;
 }
+/* Thank you Stack Overflow (clear x Chrome) */
+input[type="search"]::-ms-clear {
+  display: none;
+  width: 0;
+  height: 0;
+}
+input[type="search"]::-ms-reveal {
+  display: none;
+  width: 0;
+  height: 0;
+}
 
-.left-icon {
-  color: black;
-  cursor: pointer;
-  font-size: 32px;
-  margin: 14px 10px 0px 10px;
-  position: absolute;
+/* clears the 'X' from Chrome */
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+  display: none;
 }
 
 .input-container {
@@ -19,13 +30,12 @@
 
 .search-input {
   background-color: whitesmoke;
-  border-radius: 6px;
-  box-shadow: 0px 2px 12px 5px rgb(101, 101, 240);
-  cursor: pointer;
+  border-radius: 10px;
+  box-shadow: 0px 2px 12px 3px rgb(101, 101, 240);
   font-size: 16pt;
   height: 60px;
   overflow: hidden;
-  text-align: center;
+  padding-left: 10px;
   width: 700px;
 }
 
@@ -33,17 +43,49 @@
   font-size: 16pt;
 }
 
-.right-icon-container {
+.icon-container {
   position: relative;
 }
 
+.left-icon {
+  color: black;
+  cursor: pointer;
+  font-size: 28px;
+  margin: 14px 10px 0px 10px;
+  position: absolute;
+  right: 54px;
+}
+
+.icon-divider {
+  position: absolute;
+  border-right: 1px solid rgb(128, 128, 128);
+  right: 54px;
+  top: 15px;
+  height: 30px;
+}
+
 .right-icon {
-  right: 5px;
+  color: black;
+  cursor: pointer;
+  font-size: 28px;
+  right: 13px;
+  margin: 14px 0 0 10px;
+  position: absolute;
 }
 
 .left-icon:hover,
 .right-icon:hover {
   color: rgb(210, 96, 235);
+}
+
+/* Thanks frontend masters: Website accessiblity */
+.visuallyhidden {
+  position: absolute;
+  left: 0;
+  top: -500px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
 }
 
 @media screen and (max-width: 768px) {

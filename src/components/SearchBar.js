@@ -21,20 +21,22 @@ const SearchBar = ({ placeholder, onSearch }) => {
 
   return (
     <div className="searchbar-container">
-      <div>
-      <IoClose onClick={resetInputField} className="left-icon" />
-      </div>
-        <input
-          type="text"
-          className="search-input"
-          placeholder={placeholder}
-          onFocus={e => e.target.placeholder = ''}
-          onBlur={e => e.target.placeholder = `${placeholder}`}
-          value={term}
-          onChange={handleInputChange}
-        />
-      <div className="right-icon-container">
-        <IoSearch onClick={onGetGifsFromSearch} className="right-icon left-icon"/>
+      <form>
+        <label for="search gifs" className="visuallyhidden">Seach Gifs</label>
+          <input
+            type="search"
+            className="search-input"
+            placeholder={placeholder}
+            onFocus={e => e.target.placeholder = ''}
+            onBlur={e => e.target.placeholder = `${placeholder}`}
+            value={term}
+            onChange={handleInputChange}
+          />
+      </form>
+      <div className="icon-container">
+        <IoClose onClick={resetInputField} className="left-icon" />
+        <div className="icon-divider"></div>
+        <IoSearch onClick={onGetGifsFromSearch} className="right-icon"/>
       </div>
     </div>
   )
